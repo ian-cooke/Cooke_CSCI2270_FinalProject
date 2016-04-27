@@ -1,0 +1,8 @@
+Mercury,0
+Venus,0
+Earth,1,Moon,-2.30
+Mars,1,Phobos,-0.157,Deimos,-0.448
+Jupiter,1,Io,-6.15,Europa,-7.73,Ganymede,-9.71,Callisto,-11.36
+Saturn,1,Titan,-6.51
+Uranus,0
+Neptune,0

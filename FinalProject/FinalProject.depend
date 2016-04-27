@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1461729163 source:/home/user/Dropbox/CUBoulder/Sophomore/Spring/DataStructures/FinalProject/main.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	"System.h"
+
+1461728914 /home/user/Dropbox/CUBoulder/Sophomore/Spring/DataStructures/FinalProject/include/System.h
+	<iostream>
+	<vector>
+
+1461729142 source:/home/user/Dropbox/CUBoulder/Sophomore/Spring/DataStructures/FinalProject/src/System.cpp
+	"System.h"
+	<iostream>
+	<vector>
+
