@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     System SolarSystem;
-    /* ***UNCOMMENT HERE***
+    /* UNCOMMENT HERE
     // File I/O
     // Planets file is an adjacency list that will be placed into a graph
     string planetFile = "Planets.txt";
@@ -105,7 +105,8 @@ int main()
         }
         i++;
     }
-    ***UNCOMMENT HERE*** */
+    UNCOMMENT HERE*/
+
     int input = 0;
     while (input != 8)
     {
@@ -122,6 +123,10 @@ int main()
         string destination, type, name, parent, body1, body2, deltav;
         switch (input)
         {
+            if((input>8)||(input<1))
+            {
+                break;
+            }
         case 1:
             SolarSystem.displayShipState();
             break;
@@ -139,8 +144,24 @@ int main()
             break;
         case 5:
             cin.ignore();
-            cout<<"Enter the new body's type: "<<endl;
+            cout<<"Enter the new body's type (planet or moon): "<<endl;
             getline(cin,type);
+            while((type!="planet")&&(type!="moon"))
+            {
+                if(type=="Planet")
+                {
+                    type="planet";
+                }
+                else if(type=="Moon")
+                {
+                    type="moon";
+                }
+                else
+                {
+                    cout<<"Please enter planet or moon: "<<endl;
+                    getline(cin,type);
+                }
+            }
             cout<<"Enter the new body's name: "<<endl;
             getline(cin,name);
             cout<<"Enter the new body's parent's name (enter '0' if not a moon):"<<endl;
@@ -155,7 +176,7 @@ int main()
             getline(cin,body2);
             cout<<"Enter the delta-v required"<<endl;
             getline(cin,deltav);
-            SolarSystem.addEdge(bod1,body2,stof(deltav));
+            SolarSystem.addEdge(body1,body2,stof(deltav));
             break;
         case 7:
             SolarSystem.showOrder();
@@ -165,6 +186,5 @@ int main()
             break;
         }
     }
-
     return 0;
 }
