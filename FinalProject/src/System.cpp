@@ -38,7 +38,8 @@ void System::addBody(string type, string name, string parentName)
     if (!found)
     {
         Body b = Body(type, name);
-        if (type == "planet")
+        // Included capitalized version of Planet
+        if (type == "planet" || type == "Planet")
         {
             planets.push_back(b);
         }
@@ -60,41 +61,48 @@ void System::addEdge(string body1, string body2, float weight)
 {
     Body *parent = findBody(body1);
     Body *other = findBody(body2);
-    for (int i = 0; i < planets.size(); i++)
-    {
-        if (planets[i].name == body1)
-        {
-            if (other->type == "planet")
-            {
-                for (int j = 0; j < planets.size(); j++)
-                {
-                    if (planets[j].name == body2 && i != j)
-                    {
-                        adjBody ab;
-                        ab.b = &planets[j];
-                        ab.deltaV = weight;
-                        ab.b->parent = parent;
-                        planets[i].adjPlanets.push_back(ab);
-                    }
-                }
-            }
-            else
-            {
-                for (int j = 0; j < planets[i].moons.size(); j++)
-                {
-                    if (planets[i].moons[j].name == body2 && i != j)
-                    {
-                        adjBody ab;
-                        ab.b = &planets[i].moons[j];
-                        ab.deltaV = weight;
-                        ab.b->parent = parent;
-                        planets[i].adjPlanets.push_back(ab);
-                        //cout<<planets[i].name<<"..."<<planets[i].adjPlanets.back().b->name<<endl;
-                    }
-                }
-            }
-        }
-    }
+
+    // Ensures body1 and body2 exist before attempting to add new edge
+   	if(other != NULL && parent != NULL){ 
+	    for (int i = 0; i < planets.size(); i++)
+	    {
+	        if (planets[i].name == body1)
+	        {
+	            if (other->type == "planet")
+	            {
+	                for (int j = 0; j < planets.size(); j++)
+	                {
+	                    if (planets[j].name == body2 && i != j)
+	                    {
+	                        adjBody ab;
+	                        ab.b = &planets[j];
+	                        ab.deltaV = weight;
+	                        ab.b->parent = parent;
+	                        planets[i].adjPlanets.push_back(ab);
+	                    }
+	                }
+	            }
+	            else
+	            {
+	                for (int j = 0; j < planets[i].moons.size(); j++)
+	                {
+	                    if (planets[i].moons[j].name == body2 && i != j)
+	                    {
+	                        adjBody ab;
+	                        ab.b = &planets[i].moons[j];
+	                        ab.deltaV = weight;
+	                        ab.b->parent = parent;
+	                        planets[i].adjPlanets.push_back(ab);
+	                        //cout<<planets[i].name<<"..."<<planets[i].adjPlanets.back().b->name<<endl;
+	                    }
+	                }
+	            }
+	        }
+	    }
+	}
+	else{
+		cout << "One or more inputs do not exist." << endl;
+	}
 }
 
 void System::displaySystem()

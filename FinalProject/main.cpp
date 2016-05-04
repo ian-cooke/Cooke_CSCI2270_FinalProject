@@ -8,7 +8,6 @@ using namespace std;
 int main()
 {
     System SolarSystem;
-    /* ***UNCOMMENT HERE***
     // File I/O
     // Planets file is an adjacency list that will be placed into a graph
     string planetFile = "Planets.txt";
@@ -105,7 +104,6 @@ int main()
         }
         i++;
     }
-    ***UNCOMMENT HERE*** */
     int input = 0;
     while (input != 8)
     {
@@ -155,7 +153,7 @@ int main()
             getline(cin,body2);
             cout<<"Enter the delta-v required"<<endl;
             getline(cin,deltav);
-            SolarSystem.addEdge(bod1,body2,stof(deltav));
+            SolarSystem.addEdge(body1,body2,stof(deltav));
             break;
         case 7:
             SolarSystem.showOrder();
@@ -163,6 +161,9 @@ int main()
         case 8:
             cout<<"Goodbye!"<<endl;
             break;
+        // Added default case so input that isn't an option doesn't cause infinite loop
+        default:
+        	break;
         }
     }
 
