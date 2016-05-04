@@ -106,8 +106,9 @@ int main()
         i++;
     }
     ***UNCOMMENT HERE*** */
-    int input = 0;
-    while (input != 8)
+    string input = "0";
+    int x=0;
+    while (input != "8")
     {
         cout << "======Main Menu======" << endl;
         cout<<"1. Display State of Ship"<<endl;
@@ -118,26 +119,29 @@ int main()
         cout<<"6. Add Edge"<<endl;
         cout<<"7. Show Order of Planets and Moons"<<endl;
         cout<<"8. Leave System"<<endl;
+        if(x==1){
+            cout<<"The previous input was not a number between 1 and 8"<<endl;
+        }
+        x=1;
         cin>>input;
         string destination, type, name, parent, body1, body2, deltav;
-        switch (input)
-        {
-        case 1:
+        if(input=="1"){
+            x=0;
             SolarSystem.displayShipState();
-            break;
-        case 2:
+        }else if(input== "2" ){
+            x=0;
             SolarSystem.displaySystem();
-            break;
-        case 3:
+        }else if(input== "3" ){
+            x=0;
             cin.ignore();
             cout<<"Enter a destination: "<<endl;
             getline(cin,destination);
             SolarSystem.makeTrip(destination);
-            break;
-        case 4:
+        }else if(input== "4" ){
+            x=0;
             SolarSystem.refuel();
-            break;
-        case 5:
+        }else if(input== "5" ){
+            x=0;    
             cin.ignore();
             cout<<"Enter the new body's type: "<<endl;
             getline(cin,type);
@@ -146,8 +150,8 @@ int main()
             cout<<"Enter the new body's parent's name (enter '0' if not a moon):"<<endl;
             getline(cin,parent);
             SolarSystem.addBody(type,name,parent);
-            break;
-        case 6:
+        }else if(input== "6" ){
+            x=0;    
             cin.ignore();
             cout<<"Enter the first body"<<endl;
             getline(cin,body1);
@@ -156,14 +160,14 @@ int main()
             cout<<"Enter the delta-v required"<<endl;
             getline(cin,deltav);
             SolarSystem.addEdge(bod1,body2,stof(deltav));
-            break;
-        case 7:
+        }else if(input== "7" ){
+            x=0;
             SolarSystem.showOrder();
-            break;
-        case 8:
+        }else if(input== "8"){
+            x=0;
             cout<<"Goodbye!"<<endl;
-            break;
         }
+        
     }
 
     return 0;
